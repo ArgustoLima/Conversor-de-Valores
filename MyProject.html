@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(144, 151, 255);
+            font: normal 15pt Arial;
+            color: white;
+        }
+
+        header {
+            text-align: center; 
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 600px;
+            margin: auto;
+            color: black;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.418);
+        }
+
+        p[id="valor"] {
+            text-align: center;
+        }
+
+        p[id="ver"] {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            color: black;
+            font: normal 12pt italic;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversor</h1>
+        <p>Conversor de decimal, hexadecimal e binário</p>
+    </header>
+    <section>
+        <div>
+            <p id="first">
+                Converter: <input type="radio" name="choosef" id="decimalf">
+                <label for="decimalf">Decimal</label>
+
+                <input type="radio" name="choosef" id="hexadecimalf">
+                <label for="hexadecimalf">Hexadecimal</label>
+
+                <input type="radio" name="choosef" id="binariof">
+                <label for="binariof">Binario</label>
+
+                <input type="radio" name="choosef" id="octalf">
+                <label for="octalf">Octal</label>
+            </p>
+            <p id="valor"><input type="search" name="inserir" id="inserir"></p>
+            <p id="second">
+                Para: <input type="radio" name="chooses" id="decimals">
+                <label for="decimals">Decimal</label>
+
+                <input type="radio" name="chooses" id="hexadecimals">
+                <label for="hexadecimals">Hexadecimal</label>
+
+                <input type="radio" name="chooses" id="binarios">
+                <label for="binarios">Binario</label>
+
+                <input type="radio" name="chooses" id="octals">
+                <label for="octals">Octal</label>
+            </p>
+            <p id="ver">
+                <input type="button" value="Verificador" onclick="verificador()">
+            </p>
+        </div>
+        <div id="resultado">
+            
+        </div>
+        <script>
+            function verificador() {
+                var resul = window.document.getElementById('resultado')
+                
+                var insert = window.document.getElementById('inserir')
+                var inser = insert.value
+                var ins = parseInt(inser) 
+
+                var cvt = window.document.getElementsByName('choosef')
+                var cvtpara = window.document.getElementsByName('chooses')
+
+                if (cvt[0].checked && cvtpara[0].checked) {
+
+                    resul.innerHTML = `Resultado: ${ins} (dec)`
+
+                } else if(cvt[0].checked && cvtpara[1].checked) {
+
+                    var hexadecimal = ins.toString(16)
+
+                    resul.innerHTML = `Resultado: ${hexadecimal} (hex)`
+
+                } else if(cvt[0].checked && cvtpara[2].checked) {
+
+                    var binario = ins.toString(2)
+
+                    resul.innerHTML = `Resultado: ${binario} (binario)`
+
+                } else if(cvt[0].checked && cvtpara[3].checked) {
+                    
+                    var octal = ins.toString(8)
+
+                    resul.innerHTML = `Resultado: ${octal} (octal)`
+
+                } else if(cvt[1].checked && cvtpara[0].checked) {
+                   
+                    var hexadecimal = inser.toString(16)
+
+                    var decimal = parseInt(hexadecimal, 16)
+
+                    resul.innerHTML = `Resultado: ${decimal} (dec)`
+
+                } else if(cvt[1].checked && cvtpara[1].checked) {
+
+                    var hexadecimal = inser.toString(16)
+
+                    resul.innerHTML = `Resultado: ${hexadecimal} (hex)`
+
+                } else if(cvt[1].checked && cvtpara[2].checked) {
+
+                    var hexadecimal = inser.toString(16)
+
+                    var decimal = parseInt(hexadecimal, 16)
+
+                    var binario = decimal.toString(2);
+
+                    resul.innerHTML = `Resultado: ${binario} (bin)`
+
+                } else if(cvt[1].checked && cvtpara[3].checked) {
+
+                    var hexadecimal =  inser.toString(16)
+
+                    var decimal = parseInt(hexadecimal, 16)
+
+                    var octal = decimal.toString(8)
+
+                    resul.innerHTML = `Resultado: ${octal} (octal)`
+
+                } else if(cvt[2].checked && cvtpara[0].checked) {
+
+                    var binario = inser.toString(2)
+
+                    var decimal = parseInt(binario, 2)
+
+                    resul.innerHTML = `Resultado: ${decimal} (dec)`
+
+                } else if(cvt[2].checked && cvtpara[1].checked) {
+
+                    var binario = inser.toString(2)
+
+                    var decimal = parseInt(binario, 2)
+
+                    var hexadecimal = decimal.toString(16)
+
+                    resul.innerHTML = `Resultado: ${hexadecimal} (hex)`
+
+                } else if(cvt[2].checked && cvtpara[2].checked) {
+
+                    var binario = inser.toString(2)
+
+                    resul.innerHTML = `Resultado: ${binario} (bin)`
+
+                } else if(cvt[2].checked && cvtpara[3].checked) {
+
+                    var binario = inser.toString(2)
+
+                    var decimal = parseInt(binario, 2)
+
+                    var octal = decimal.toString(8)
+
+                    resul.innerHTML = `Resultado: ${octal} (octal)`
+
+                } else if(cvt[3].checked && cvtpara[0].checked) {
+
+                    var octal = inser.toString(8)
+
+                    var decimal = parseInt(octal, 8)
+
+                    resul.innerHTML = `Resultado: ${decimal} (dec)`
+
+                } else if(cvt[3].checked && cvtpara[1].checked) {
+
+                    var octal = inser.toString(8)
+
+                    var decimal = parseInt(octal, 8)
+
+                    var hexadecimal = decimal.toString(16)
+
+                    resul.innerHTML = `Resultado: ${hexadecimal} (hex)`
+
+                } else if(cvt[3].checked && cvtpara[2].checked) {
+
+                    var octal = inser.toString(8)
+
+                    var decimal = parseInt(octal, 8)
+
+                    var binario = decimal.toString(2)
+
+                    resul.innerHTML = `Resultado: ${binario} (bin)`
+
+                } else if(cvt[3].checked && cvtpara[3].checked) {
+
+                    var octal = inser.toString(8)
+
+                    resul.innerHTML = `Resultado: ${octal} (octal)`
+
+                }
+
+            }
+        </script>
+    </section>
+    <footer>
+    <br>&copy; Augusto Lima</br>
+    </footer>
+</body>
+</html>
