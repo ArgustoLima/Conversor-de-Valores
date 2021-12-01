@@ -1,0 +1,1 @@
+    Esse código foi desenvolvido para converter valores de decimal, hexadecimal, binário e octal, em JS.
